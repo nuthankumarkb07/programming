@@ -1,0 +1,100 @@
+{
+  "macros": [
+    {
+      "name": "parrot-AZURE_CLIENT_ID",
+      "value": "55f6e054-efc3-4462-ad69-9ad78da5bc66"
+    },
+    {
+      "name": "parrot-AZURE_CLIENT_SECRET",
+      "value": "9oM8Q~GRCHZEGzMbO3yHAU0ChL1KJRXU9bP4fc64"
+    },
+    {
+      "name": "parrot-AZURE_TENANT_ID",
+      "value": "6bc44698-b191-4f2e-97ac-cd7b430088cf"
+    },
+    {
+      "name": "parrot-base64encode_acr_creds",
+      "value": "ICBbcGx1Z2lucy4iaW8uY29udGFpbmVyZC5ncnBjLnYxLmNyaSIucmVnaXN0cnkuY29uZmlncy4ibGNzZGlnaXRhbGRldi5henVyZWNyLmlvIi5hdXRoXQogICAgdXNlcm5hbWUgPSAibGNzZGlnaXRhbGRldiIKICAgIHBhc3N3b3JkID0gIjhWQjdZTUdwSGgxY1d4Y2RHbVRvTkxjRT16OGtTUjl4IgoK"
+    },
+    {
+      "name": "parrot-clusterContext",
+      "value": "vmware-ddp-dev"
+    },
+    {
+      "name": "parrot-datainfra_ns",
+      "value": "ddp-datainfra-paas"
+    },
+    {
+      "name": "parrot-domain_consumer_mural_ns",
+      "value": "domain-consumer-mural"
+    },
+    {
+      "name": "parrot-domain_native_mural_ns",
+      "value": "domain-native-mural"
+    },
+    {
+      "name": "parrot-externalkafka",
+      "value": "https://viewer.ddp-dev3.mural-gehc.com:30406"
+    },
+    {
+      "name": "parrot-foundation_ns",
+      "value": "ddp-foundation-services"
+    },
+    {
+      "name": "parrot-kafkaCloudClusterName",
+      "value": "aks-ddp-dev3-mural-viw-dev-eus-001"
+    },
+    {
+      "name": "parrot-kafkaCloudSuperUser",
+      "value": "super-user"
+    },
+    {
+      "name": "parrot-keyvaultName",
+      "value": "kv-carlsb-mural-dev-eus"
+    },
+    {
+      "name": "parrot-metallb_ip_list",
+      "value": "192.168.10.111-192.168.10.111"
+    },
+    {
+      "name": "parrot-nginx_loadbalancer_ip",
+      "value": "192.168.10.111"
+    },
+    {
+      "name": "parrot-podCIDR",
+      "value": "172.16.0.0/16"
+    },
+    {
+      "name": "parrot-prometheusRemoteWriteURL",
+      "value": "https://prometheus.ddp-dev.mural-gehc.com/api/v1/write"
+    },
+    {
+      "name": "parrot-schemaRegistryUrl",
+      "value": "https://pinot.ddp-dev3.mural-gehc.com/"
+    },
+    {
+      "name": "parrot-serviceClusterIpRange",
+      "value": "10.96.0.0/12"
+    },
+    {
+      "name": "parrot-tcp_port9001",
+      "value": "ccs-foundation-services/datareme-hl7-wcm-tcp-ingestion:9001"
+    },
+    {
+      "name": "parrot-tcp_port9002",
+      "value": "ccs-foundation-services/datareme-hl7-acm-aaa-ingestion:9002"
+    },
+    {
+      "name": "parrot-tcp_port9003",
+      "value": "ccs-foundation-services/datareme-hl7-adt-tcp-ingestion:9003"
+    },
+    {
+      "name": "parrot-workspaceID",
+      "value": "8a550a9b-bcde-4414-9429-8a7d8e186b24"
+    },
+    {
+      "name": "parrot-workspaceKey",
+      "value": "Tqplwb5mFzJva9n7JRJzUG+GYwCrWVf0fXmllcrcHjecaLwu7ajHBDXNola/69QoQQR2WxEahvBWeKmPdDOW8g=="
+    }
+  ]
+}

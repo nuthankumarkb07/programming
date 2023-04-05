@@ -1,0 +1,82 @@
+{
+  "metadata": {
+    "name": "parrot-native-ddp-dataproducts",
+    "description": "ddp dataproducts for rc9",
+    "labels": {
+      "owner": "ddp"
+    }
+  },
+  "spec": {
+    "version": "1.0.0-rc9",
+    "template": {
+      "type": "add-on",
+      "cloudType": "all",
+      "packs": [
+        {
+          "name": "ddp-helm-charts/integ/rc9/datareme-shared-volume-for-flink",
+          "type": "oci",
+          "layer": "addon",
+          "version": "0.9.0",
+          "tag": "0.9.0",
+          "values": "pack:\n  namespace: \"{{.spectro.macro.parrot-domain_native_mural_ns}}\"\nspectrocloud.com/install-priority: \"0\"\nglobal:\n  azure: false\nvolumeAccessMode: ReadWriteOnce\n#for azure file share storageclass=azurefile-csi and for onprem storageclass=spectro-storage-class\nstorageClassName: spectro-storage-class",
+          "registry": {
+            "metadata": {
+              "uid": "0.9.0",
+              "name": "0.9.0",
+              "kind": "oci",
+              "isPrivate": false
+            }
+          }
+        },
+        {
+          "name": "ddp-helm-charts/integ/rc9/dp-native-hl7-acm-charts",
+          "type": "oci",
+          "layer": "addon",
+          "version": "0.9.0",
+          "tag": "0.9.0",
+          "values": "pack:\n  namespace: \"{{.spectro.macro.parrot-domain_consumer_mural_ns}}\"\n  spectrocloud.com/install-priority: \"1\"\nglobal:\n  clusterId: \"{{.spectro.macro.parrot-clusterContext}}\"\n  azure:\n    enabled: false\n  onprem:\n    enabled: true\n  namespace: \"{{.spectro.macro.parrot-domain_consumer_mural_ns}}\"\ndatareme-hl7-acm-kafka-ingestion:\n  enabled: true\n  image:\n    repository: /ddp-docker-images/integ/rc9/datareme-hl7-acm-kafka-ingestion\n    tag: \"1885984\"\n  config:\n    kafka:\n      enableSourceTopic: false\n      kafkaCloudClusterHost: \"{{.spectro.macro.parrot-externalkafka}}\"\n      schemaRegistryUrl: \"{{.spectro.macro.parrot-schemaRegistryUrl}}\"\n      kafkaCloudClusterName: \"{{.spectro.macro.parrot-kafkaCloudClusterName}}\"\n      # kafkaCloudSuperUser: \"{{.spectro.macro.parrot-kafkaCloudSuperUser}}\"\n      kafkaOnpremNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\n      kafkaCloudNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\ndatareme-hl7-acm-tcp-ingestion:\n  config:\n    kafka:\n      kafkaNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\n  enabled: true\n  image:\n    repository: /ddp-docker-images/integ/rc9/datareme-hl7-acm-tcp-ingestion\n    tag: \"1891541\"",
+          "registry": {
+            "metadata": {
+              "uid": "0.9.0",
+              "name": "0.9.0",
+              "kind": "oci",
+              "isPrivate": false
+            }
+          }
+        },
+        {
+          "name": "ddp-helm-charts/integ/rc9/dp-native-hl7-wcm-charts",
+          "type": "oci",
+          "layer": "addon",
+          "version": "0.9.0",
+          "tag": "0.9.0",
+          "values": "pack:\n  namespace: \"{{.spectro.macro.parrot-domain_consumer_mural_ns}}\"\n  spectrocloud.com/install-priority: \"2\"\nglobal:\n  clusterId: \"{{.spectro.macro.parrot-clusterContext}}\"\n  namespace: \"{{.spectro.macro.parrot-domain_consumer_mural_ns}}\"\n  azure:\n    enabled: false\n  onprem:\n    enabled: true\ndatareme-hl7-wcm-kafka-ingestion:\n  enabled: true\n  image:\n    repository: /ddp-docker-images/integ/rc9/datareme-hl7-wcm-kafka-ingestion\n    tag: \"1886375\"\n  config:\n    kafka:\n      enableSourceTopic: false\n      kafkaCloudClusterHost: \"{{.spectro.macro.parrot-externalkafka}}\"\n      schemaRegistryUrl: \"{{.spectro.macro.parrot-schemaRegistryUrl}}\"\n      kafkaCloudClusterName: \"{{.spectro.macro.parrot-kafkaCloudClusterName}}\"\n      # kafkaCloudSuperUser: \"{{.spectro.macro.parrot-kafkaCloudSuperUser}}\"\n      kafkaOnpremNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\n      kafkaCloudNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\ndatareme-hl7-wcm-tcp-ingestion:\n  config:\n    kafka:\n      kafkaNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\n  enabled: true\n  image:\n    repository: /ddp-docker-images/integ/rc9/datareme-hl7-wcm-tcp-ingestion\n    tag: \"1888640\"",
+          "registry": {
+            "metadata": {
+              "uid": "0.9.0",
+              "name": "0.9.0",
+              "kind": "oci",
+              "isPrivate": false
+            }
+          }
+        },
+        {
+          "name": "ddp-helm-charts/integ/rc9/dp-native-hl7-adt-charts",
+          "type": "oci",
+          "layer": "addon",
+          "version": "0.9.0",
+          "tag": "0.9.0",
+          "values": "pack:\n  namespace: \"{{.spectro.macro.parrot-domain_consumer_mural_ns}}\"\n  spectrocloud.com/install-priority: \"3\"\nglobal:\n  clusterId: \"{{.spectro.macro.parrot-clusterContext}}\"\n  namespace: \"{{.spectro.macro.parrot-domain_consumer_mural_ns}}\"\n  azure:\n    enabled: false\n  onprem:\n    enabled: true\ndatareme-hl7-adt-kafka-ingestion:\n  enabled: true\n  image:\n    repository: /ddp-docker-images/integ/rc9/datareme-hl7-adt-kafka-ingestion\n    tag: \"1887571\"\n  config:\n    kafka:\n      enableSourceTopic: false\n      kafkaCloudClusterHost: \"{{.spectro.macro.parrot-externalkafka}}\"\n      schemaRegistryUrl: \"{{.spectro.macro.parrot-schemaRegistryUrl}}\"\n      kafkaCloudClusterName: \"{{.spectro.macro.parrot-kafkaCloudClusterName}}\"\n      # kafkaCloudSuperUser: \"{{.spectro.macro.parrot-kafkaCloudSuperUser}}\"\n      kafkaOnpremNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\n      kafkaCloudNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\ndatareme-hl7-adt-tcp-ingestion:\n  config:\n    kafka:\n      kafkaNamespace: \"{{.spectro.macro.parrot-foundation_ns}}\"\n      replicas: \"1\"\n  enabled: true\n  image:\n    tag: \"1888661\"\n    repository: /ddp-docker-images/integ/rc9/datareme-hl7-adt-tcp-ingestion",
+          "registry": {
+            "metadata": {
+              "uid": "0.9.0",
+              "name": "0.9.0",
+              "kind": "oci",
+              "isPrivate": false
+            }
+          }
+        }
+      ]
+    }
+  }
+}

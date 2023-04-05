@@ -1,0 +1,131 @@
+{
+  "metadata": {
+    "annotations": {},
+    "name": "_ddp_prefix-ddp-onprem",
+    "labels": {
+      "owner": "ddp"
+    }
+  },
+  "spec": {
+    "cloudConfig": {
+      "network": {
+        "networkName": "",
+        "staticIp": true
+      },
+      "placement": {
+        "datacenter": "CCS-Digital",
+        "folder": "DDP-user/ddp-platform/spc-ddp-onprem-parrot",
+        "imageTemplateFolder": "DDP-user/spectro-templates",
+        "network": {
+          "networkName": "",
+          "staticIp": true
+        }
+      },
+      "staticIp": true,
+      "sshKeys": [
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmDIan33QLa0axggMe/JA//zBa56r+QMe0juEHYWyAuqQ0v7HSAUVGQRcdcLwc2DOhUhtZ+kUSwngqepyhtpAJhqAniVkimM7VMQ3Gn50Q8ya/Ffk07ckOsi2lxsCw/FVwkytWiAOApAvDFoVhmyyzqGssLBYr2iuilqwlVd+xD2uyw4iraKt17y/44RJ4d5tvLV1/GVUtGGGQImnscXruRT50ozaQ6qLRVD/gCy2GftAobWpYTQSyZQohFoRAmWyQRK5ovB9s0YXfSR6B0AUcOMEsk2tlLhLfE+p+RTFzjkjv/e5L2LKqe76G5PrOI6Dupy+JMzumo020dv/ErovL ddp"
+      ],
+      "ntpServers": [
+        "xxx"
+      ]
+    },
+    "machinePoolConfig": [
+      {
+        "cloudConfig": {
+          "instanceType": {
+            "diskGiB": 80,
+            "memoryMiB": 8192,
+            "numCPUs": 4
+          },
+          "placements": [
+            {
+              "cluster": "DDP",
+              "datastore": "Localdata31130",
+              "resourcePool": "ddp-pool-01",
+              "network": {
+                "networkName": "velocloud",
+                "staticIp": true,
+                "parentPoolUid": "63c7c1f5eda267badec4bc0f"
+              }
+            }
+          ]
+        },
+        "poolConfig": {
+          "name": "master-pool",
+          "labels": [
+            "master"
+          ],
+          "isControlPlane": true,
+          "useControlPlaneAsWorker": false,
+          "taints": [],
+          "additionalLabels": {},
+          "updateStrategy": {
+            "type": "RollingUpdateScaleOut"
+          },
+          "size": 1
+        }
+      },
+      {
+        "cloudConfig": {
+          "instanceType": {
+            "diskGiB": 256,
+            "memoryMiB": 65536,
+            "numCPUs": 16
+          },
+          "placements": [
+            {
+              "cluster": "DDP",
+              "datastore": "Localdata31130",
+              "resourcePool": "ddp-pool-01",
+              "network": {
+                "networkName": "velocloud",
+                "staticIp": true,
+                "parentPoolUid": "63c7c1f5eda267badec4bc0f"
+              }
+            }
+          ]
+        },
+        "poolConfig": {
+          "name": "worker-pool",
+          "labels": [
+            "worker"
+          ],
+          "taints": [],
+          "additionalLabels": {},
+          "updateStrategy": {
+            "type": "RollingUpdateScaleOut"
+          },
+          "size": 1
+        }
+      }
+    ],
+    "cloudAccountUid": "635a83763b60b45b7c1a3163",
+    "edgeHostUid": "",
+    "profiles": [
+      {
+        "uid": "63c7c1f5eda267badec4bc0f"
+      }
+    ],
+    "policies": {
+      "scanPolicy": {}
+    },
+    "clusterConfig": {
+      "machineManagementConfig": {
+        "osPatchConfig": {
+          "schedule": "",
+          "patchOnBoot": false,
+          "rebootIfRequired": false
+        }
+      },
+      "updateWorkerPoolsInParallel": true,
+      "resources": {
+        "namespaces": [],
+        "rbacs": []
+      },
+      "location": null,
+      "fips": {
+        "mode": "fipsDisabled"
+      }
+    }
+  }
+}

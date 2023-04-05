@@ -1,0 +1,48 @@
+{
+    "metadata": {
+        "name": "parrot-namespaces",
+        "description": "Create required namespaces for DDP",
+        "labels": {
+            "owner": "ddp"
+          }
+    },
+    "spec": {
+        "version": "1.0.0-rc9",
+        "template": {
+            "type": "add-on",
+            "cloudType": "all",
+            "packs": [
+                {
+                    "name": "parrot-pack",
+                    "type": "manifest",
+                    "layer": "addon",
+                    "version": "1.0.0-rc9",
+                    "values": "pack:\n  spectrocloud.com/install-priority: \"0\"",
+                    "registry": {
+                        "metadata": {
+                            "uid": "",
+                            "name": "",
+                            "kind": "",
+                            "isPrivate": false
+                        }
+                    },
+                    "manifests": [
+                        {
+                            "name": "akv2k8s",
+                            "content": "apiVersion: v1\nkind: Namespace\nmetadata:\n  labels:\n    kubernetes.io/metadata.name: akv2k8s\n  name: akv2k8s"
+                        },
+                        {
+                            "name": "domain-native-mural",
+                            "content": "apiVersion: v1\nkind: Namespace\nmetadata:\n  labels:\n    kubernetes.io/metadata.name: domain-native-mural\n  name: domain-native-mural"
+                        },
+                        {
+                            "name": "domain-consumer-mural",
+                            "content": "apiVersion: v1\nkind: Namespace\nmetadata:\n  labels:\n    kubernetes.io/metadata.name: domain-consumer-mural\n  name: domain-consumer-mural"
+                        }
+
+                    ]
+                }
+            ]
+        }
+    }
+}
