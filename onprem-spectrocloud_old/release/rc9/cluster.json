@@ -13,9 +13,9 @@
         "staticIp": true
       },
       "placement": {
-        "datacenter": "BLRDMZPCSDC",
-        "folder": "DDP/spc-ddp-peacock-peacock",
-        "imageTemplateFolder": "DDP/spectro-templates",
+        "datacenter": "CCS-Digital",
+        "folder": "DDP-user/ddp-platform/spc-ddp-onprem-parrot",
+        "imageTemplateFolder": "DDP-user/spectro-templates",
         "network": {
           "networkName": "",
           "staticIp": true
@@ -39,13 +39,13 @@
           },
           "placements": [
             {
-              "cluster": "DDP-CL01",
-              "datastore": "LocalDATA1032",
+              "cluster": "DDP",
+              "datastore": "Localdata31130",
               "resourcePool": "ddp-pool-01",
               "network": {
                 "networkName": "velocloud",
                 "staticIp": true,
-                "parentPoolUid": "643417c023276f040b675c90"
+                "parentPoolUid": "63c7c1f5eda267badec4bc0f"
               }
             }
           ]
@@ -74,13 +74,13 @@
           },
           "placements": [
             {
-              "cluster": "DDP-CL01",
-              "datastore": "LocalDATA1032",
+              "cluster": "DDP",
+              "datastore": "Localdata31130",
               "resourcePool": "ddp-pool-01",
               "network": {
                 "networkName": "velocloud",
                 "staticIp": true,
-                "parentPoolUid": "643417c023276f040b675c90"
+                "parentPoolUid": "63c7c1f5eda267badec4bc0f"
               }
             }
           ]
@@ -99,11 +99,11 @@
         }
       }
     ],
-    "cloudAccountUid": "641e66cb23275e6348f84393",
+    "cloudAccountUid": "635a83763b60b45b7c1a3163",
     "edgeHostUid": "",
     "profiles": [
       {
-        "uid": "64341d0e23276f07b8492992"
+        "uid": "63c7c1f5eda267badec4bc0f"
       }
     ],
     "policies": {

@@ -47,4 +47,3 @@
 ##### wait for the datainfra apps and up and running before executing.
 - make auth
 - make pipeline5
-
