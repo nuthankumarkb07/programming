@@ -18,7 +18,7 @@
           "layer": "addon",
           "version": "",
           "tag": "",
-          "values": "pack:\n  namespace: \"{{.spectro.macro._ddp_prefix-domain_consumer_mural_ns}}\"\nspectrocloud.com/install-priority: \"0\"\nglobal:\n  azure: false\nvolumeAccessMode: ReadWriteOnce\n#for azure file share storageclass=azurefile-csi and for onprem storageclass=spectro-storage-class\nstorageClassName: spectro-storage-class",
+          "values": "pack:\n  namespace: \"{{.spectro.macro._ddp_prefix-domain_native_mural_ns}}\"\nspectrocloud.com/install-priority: \"0\"\nglobal:\n  azure: false\nvolumeAccessMode: ReadWriteOnce\n#for azure file share storageclass=azurefile-csi and for onprem storageclass=spectro-storage-class\nstorageClassName: spectro-storage-class",
           "registry": {
             "metadata": {
               "uid": "",
