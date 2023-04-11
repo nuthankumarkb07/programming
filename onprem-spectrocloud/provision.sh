@@ -18,6 +18,7 @@ for var in ${!_macro_@}; do
    jq -n --arg name "$_ddp_prefix-${var//_macro_/}" --arg value "${!var}" '{name: $name, value: $value}'
 done | jq -n '.macros |= [inputs]' > release/$_ddp_release_version/macros.json
 echo "creating macros. DONE"
+
 ### set up infrastructure.json for infra profile
 jq --arg newval "$_ddp_spectrocloudRegistryUid" '.spec.template.packs[0].registry.metadata.uid|= $newval' release/$_ddp_release_version/infrastructure.json > infrastructure.json
 mv infrastructure.json release/$_ddp_release_version/infrastructure.json
@@ -47,9 +48,9 @@ jq --arg newval "$_ddp_ociregistryUid" '.spec.template.packs[1].registry.metadat
 mv datainfra.json release/$_ddp_release_version/datainfra.json
 jq --arg newval "$_ddp_ociregistry" '.spec.template.packs[1].registry.metadata.name|= $newval' release/$_ddp_release_version/datainfra.json > datainfra.json
 mv datainfra.json release/$_ddp_release_version/datainfra.json
-jq --arg newval "$_ddp_namespace_charts_version" '.spec.template.packs[0].version|= $newval' release/$_ddp_release_version/datainfra.json > datainfra.json
+jq --arg newval "$_ddp_namespace_charts_version" '.spec.template.packs[1].version|= $newval' release/$_ddp_release_version/datainfra.json > datainfra.json
 mv datainfra.json release/$_ddp_release_version/datainfra.json
-jq --arg newval "$_ddp_namespace_charts_tag" '.spec.template.packs[0].tag|= $newval' release/$_ddp_release_version/datainfra.json > datainfra.json
+jq --arg newval "$_ddp_namespace_charts_tag" '.spec.template.packs[1].tag|= $newval' release/$_ddp_release_version/datainfra.json > datainfra.json
 mv datainfra.json release/$_ddp_release_version/datainfra.json
 
 echo "setting up  datainfra payload. DONE"
@@ -60,9 +61,9 @@ jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[0].version|= 
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_flink_charts_tag" '.spec.template.packs[0].tag|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[0].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistryUid" '.spec.template.packs[0].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_tag" '.spec.template.packs[0].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistry" '.spec.template.packs[0].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_acm_charts_name" '.spec.template.packs[1].name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
@@ -70,9 +71,9 @@ jq --arg newval "$_ddp_acm_charts_version" '.spec.template.packs[1].version|= $n
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_acm_charts_tag" '.spec.template.packs[1].tag|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[1].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistryUid" '.spec.template.packs[1].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_tag" '.spec.template.packs[1].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistry" '.spec.template.packs[1].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_wcm_charts_name" '.spec.template.packs[2].name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
@@ -80,9 +81,9 @@ jq --arg newval "$_ddp_wcm_charts_version" '.spec.template.packs[2].version|= $n
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_wcm_charts_tag" '.spec.template.packs[2].tag|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[2].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistryUid" '.spec.template.packs[2].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_tag" '.spec.template.packs[2].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistry" '.spec.template.packs[2].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_adt_charts_name" '.spec.template.packs[3].name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
@@ -90,15 +91,16 @@ jq --arg newval "$_ddp_adt_charts_version" '.spec.template.packs[3].version|= $n
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
 jq --arg newval "$_ddp_adt_charts_tag" '.spec.template.packs[3].tag|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[3].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistryUid" '.spec.template.packs[3].registry.metadata.uid|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
-jq --arg newval "$_ddp_flink_charts_tag" '.spec.template.packs[3].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
+jq --arg newval "$_ddp_ociregistry" '.spec.template.packs[3].registry.metadata.name|= $newval' release/$_ddp_release_version/dataproducts.json > dataproducts.json
 mv dataproducts.json release/$_ddp_release_version/dataproducts.json
+
 echo "setting up  dataproducts payload. DONE"
 ### setup loadbalancer profile
-jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[0].registry.metadata.uid|= $newval' release/$_ddp_release_version/loadbalancer.json > loadbalancer.json
+jq --arg newval "$_ddp_spectrocloudRegistryUid" '.spec.template.packs[0].registry.metadata.uid|= $newval' release/$_ddp_release_version/loadbalancer.json > loadbalancer.json
 mv loadbalancer.json release/$_ddp_release_version/loadbalancer.json
-jq --arg newval "$_ddp_flink_charts_version" '.spec.template.packs[1].registry.metadata.uid|= $newval' release/$_ddp_release_version/loadbalancer.json > loadbalancer.json
+jq --arg newval "$_ddp_spectrocloudRegistryUid" '.spec.template.packs[1].registry.metadata.uid|= $newval' release/$_ddp_release_version/loadbalancer.json > loadbalancer.json
 mv loadbalancer.json release/$_ddp_release_version/loadbalancer.json
 echo "setting up  loadbalancer payload. DONE"
 echo "release deploying is "$_ddp_release_version
@@ -111,6 +113,8 @@ sed "s|_ddp_prefix|$_ddp_prefix|g" release/$_ddp_release_version/datainfra.json 
 sed "s|_ddp_prefix|$_ddp_prefix|g" release/$_ddp_release_version/infrastructure.json  > apply_files/infrastructure.json
 sed "s|_ddp_prefix|$_ddp_prefix|g" release/$_ddp_release_version/loadbalancer.json  > apply_files/loadbalancer.json
 sed "s|_ddp_prefix|$_ddp_prefix|g" release/$_ddp_release_version/namespaces.json  > apply_files/namespaces.json
+sed "s|_ddp_prefix|$_ddp_prefix|g" release/$_ddp_release_version/kafka-cert.json  > kafka-cert.json
+sed "s|_ddp_acr_registry|$_ddp_acr_registry|g" kafka-cert.json  > apply_files/kafka-cert.json
 cp release/$_ddp_release_version/macros.json apply_files/
 
 echo "Creating macros"
@@ -169,9 +173,17 @@ curl -k --location --request POST "$BASEURL/v1/clusterprofiles/import?publish=tr
 --header projectUid:$_ddp_projectUid > config/dataproductsUid.json
 echo "Creating dataproducts profile. DONE"
 
+curl -k --location --request POST "$BASEURL/v1/clusterprofiles/import?publish=true" \
+--header 'Content-Type: application/json' \
+--data "@apply_files/kafka-cert.json" \
+--header ApiKey:$SpectroAPIKey \
+--header projectUid:$_ddp_projectUid > config/kafkacertUid.json
+echo "Creating dataproducts profile. DONE"
+
 infrastructureUid=$(cat config/infrastructureUid.json| jq '.uid' | sed -e 's/^.//' -e 's/.$//')
 loadbalancerUid=$(cat config/loadbalancerUid.json| jq '.uid' | sed -e 's/^.//' -e 's/.$//')
 namespacesUid=$(cat config/namespacesUid.json| jq '.uid' | sed -e 's/^.//' -e 's/.$//')
+kafkacertUid=$(cat config/kafkacertUid.json| jq '.uid' | sed -e 's/^.//' -e 's/.$//')
 datainfraUid=$(cat config/datainfraUid.json| jq '.uid' | sed -e 's/^.//' -e 's/.$//')
 dataproductsUid=$(cat config/dataproductsUid.json| jq '.uid' | sed -e 's/^.//' -e 's/.$//')
 
@@ -182,7 +194,7 @@ jq --arg newval "$_ddp_node_ntpserver" '.spec.cloudConfig.ntpServers|= [$newval]
 mv cluster.json release/$_ddp_release_version/cluster.json
 jq --arg newval "$_ddp_datacenter" '.spec.cloudConfig.placement.datacenter|= $newval' release/$_ddp_release_version/cluster.json > cluster.json
 mv cluster.json release/$_ddp_release_version/cluster.json
-jq --arg newval "$_ddp_folder-$_ddp_prefix" '.spec.cloudConfig.placement.folder|= $newval' release/$_ddp_release_version/cluster.json > cluster.json
+jq --arg newval "$_ddp_folder" '.spec.cloudConfig.placement.folder|= $newval' release/$_ddp_release_version/cluster.json > cluster.json
 mv cluster.json release/$_ddp_release_version/cluster.json
 jq --arg newval "$_ddp_imageTemplateFolder" '.spec.cloudConfig.placement.imageTemplateFolder|= $newval' release/$_ddp_release_version/cluster.json > cluster.json
 mv cluster.json release/$_ddp_release_version/cluster.json
@@ -231,8 +243,7 @@ else
    sleep 300
 fi
 done
-
- 
+sleep 100
 echo "Adding loadbalancer profile"
 curl -k --location --request PUT "$BASEURL/v1/spectroclusters/$clusterUid/profiles" \
 --header ApiKey:$SpectroAPIKey \
@@ -248,22 +259,38 @@ curl -k --location --request PUT "$BASEURL/v1/spectroclusters/$clusterUid/profil
 --header 'Content-Type: application/json' \
 --header projectUid:$_ddp_projectUid \
 --data '{"profiles": [{"uid": "'$infrastructureUid'"},{"uid": "'$loadbalancerUid'"},{"uid": "'$namespacesUid'"}]}'
+sleep 100
 echo "Adding namespaces profile. DONE"
+
+echo "Adding kafkacertUid profile"
+curl -k --location --request PUT "$BASEURL/v1/spectroclusters/$clusterUid/profiles" \
+--header ApiKey:$SpectroAPIKey \
+--header 'Content-Type: application/json' \
+--header projectUid:$_ddp_projectUid \
+--data '{"profiles": [{"uid": "'$infrastructureUid'"},{"uid": "'$loadbalancerUid'"},{"uid": "'$namespacesUid'"},{"uid": "'$kafkacertUid'"}]}'
+echo "Adding kafkacertUid profile. DONE"
+
+echo "sleeping for 10 minutes for namespace and loadbalancer to be applied."
+sleep 100
 
 echo "Adding datainfra profile"
 curl -k --location --request PUT "$BASEURL/v1/spectroclusters/$clusterUid/profiles" \
 --header ApiKey:$SpectroAPIKey \
 --header 'Content-Type: application/json' \
 --header projectUid:$_ddp_projectUid \
---data '{"profiles": [{"uid": "'$infrastructureUid'"},{"uid": "'$loadbalancerUid'"},{"uid": "'$namespacesUid'"},{"uid": "'$datainfraUid'"}]}'
+--data '{"profiles": [{"uid": "'$infrastructureUid'"},{"uid": "'$loadbalancerUid'"},{"uid": "'$namespacesUid'"},{"uid": "'$kafkacertUid'"},{"uid": "'$datainfraUid'"}]}'
 echo "Adding datainfra profile. DONE"
 
-
+echo "sleeping for 30 minutes for datainfra to be applied"
+sleep 2800
+sleep 1000
+sleep 1000
+echo "sleeping for 1000 seconds for datainfra to be applied"
 echo "Adding dataproducts profile"
 curl -k --location --request PUT "$BASEURL/v1/spectroclusters/$clusterUid/profiles" \
 --header ApiKey:$SpectroAPIKey \
 --header 'Content-Type: application/json' \
 --header projectUid:$_ddp_projectUid \
---data '{"profiles": [{"uid": "'$infrastructureUid'"},{"uid": "'$loadbalancerUid'"},{"uid": "'$namespacesUid'"},{"uid": "'$datainfraUid'"},{"uid": "'$dataproductsUid'"}]}'
+--data '{"profiles": [{"uid": "'$infrastructureUid'"},{"uid": "'$loadbalancerUid'"},{"uid": "'$namespacesUid'"},{"uid": "'$kafkacertUid'"},{"uid": "'$datainfraUid'"},{"uid": "'$dataproductsUid'"}]}'
 echo "Adding dataproducts profile. DONE"
 

@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "name": "foster1-kafka-cert",
+        "description": "",
+        "labels": {
+            "owner": "ddp"
+          }
+    },
+    "spec": {
+        "version": "1.0.0",
+        "template": {
+            "type": "add-on",
+            "cloudType": "all",
+            "packs": [
+                {
+                    "name": "kafka-cert",
+                    "type": "manifest",
+                    "layer": "addon",
+                    "version": "1.0.0",
+                    "values": "pack:\n  namespace: \"akv2k8s\"\n  spectrocloud.com/install-priority: \"0\"",
+                    "registry": {
+                        "metadata": {
+                            "uid": "",
+                            "name": "",
+                            "kind": "",
+                            "isPrivate": false
+                        }
+                    },
+                    "manifests": [
+                        {
+                            "name": "kafka-cert",
+                            "content": "apiVersion: batch/v1\nkind: Job\nmetadata:\n  name: kafka-cert\n  namespace: akv2k8s\n  labels:\n    jobgroup: kafka-cert\nspec:\n  template:\n    metadata:\n      name: kafka-cert\n      labels:\n        jobgroup: kafka-cert\n    spec:\n      containers:\n        - name: kafka-cert\n          image: _ddp_acr_registry/ddp-docker-images/devops/gitlab-kafka-cert-onprem-ubuntu:1\n          command:\n            - /bin/bash\n            - -xc\n            - |\n              az login --service-principal -u \"{{.spectro.macro.foster1-AZURE_CLIENT_ID}}\" -p \"{{.spectro.macro.foster1-AZURE_CLIENT_SECRET}}\" --tenant \"{{.spectro.macro.foster1-AZURE_TENANT_ID}}\"\n              echo -e \"yes\\nno\\n\"{{.spectro.macro.foster1-clusterContext}}\"\\nlocalhost\\n\"{{.spectro.macro.foster1-keyvaultName}}\"\\n\"{{.spectro.macro.foster1-emailid}}\"\" | bash create_certs.sh\n      restartPolicy: Never"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}

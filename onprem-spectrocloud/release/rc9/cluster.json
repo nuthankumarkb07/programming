@@ -13,21 +13,17 @@
         "staticIp": true
       },
       "placement": {
-        "datacenter": "BLRDMZPCSDC",
-        "folder": "DDP/spc-ddp-peacock-peacock",
-        "imageTemplateFolder": "DDP/spectro-templates",
+        "datacenter": "",
+        "folder": "",
+        "imageTemplateFolder": "",
         "network": {
           "networkName": "",
           "staticIp": true
         }
       },
       "staticIp": true,
-      "sshKeys": [
-        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmDIan33QLa0axggMe/JA//zBa56r+QMe0juEHYWyAuqQ0v7HSAUVGQRcdcLwc2DOhUhtZ+kUSwngqepyhtpAJhqAniVkimM7VMQ3Gn50Q8ya/Ffk07ckOsi2lxsCw/FVwkytWiAOApAvDFoVhmyyzqGssLBYr2iuilqwlVd+xD2uyw4iraKt17y/44RJ4d5tvLV1/GVUtGGGQImnscXruRT50ozaQ6qLRVD/gCy2GftAobWpYTQSyZQohFoRAmWyQRK5ovB9s0YXfSR6B0AUcOMEsk2tlLhLfE+p+RTFzjkjv/e5L2LKqe76G5PrOI6Dupy+JMzumo020dv/ErovL ddp"
-      ],
-      "ntpServers": [
-        "192.168.10.254"
-      ]
+      "sshKeys": [],
+      "ntpServers": []
     },
     "machinePoolConfig": [
       {
@@ -39,13 +35,13 @@
           },
           "placements": [
             {
-              "cluster": "DDP-CL01",
-              "datastore": "LocalDATA1032",
-              "resourcePool": "ddp-pool-01",
+              "cluster": "",
+              "datastore": "",
+              "resourcePool": "",
               "network": {
-                "networkName": "velocloud",
+                "networkName": "",
                 "staticIp": true,
-                "parentPoolUid": "643417c023276f040b675c90"
+                "parentPoolUid": ""
               }
             }
           ]
@@ -74,13 +70,13 @@
           },
           "placements": [
             {
-              "cluster": "DDP-CL01",
-              "datastore": "LocalDATA1032",
-              "resourcePool": "ddp-pool-01",
+              "cluster": "",
+              "datastore": "",
+              "resourcePool": "",
               "network": {
-                "networkName": "velocloud",
+                "networkName": "",
                 "staticIp": true,
-                "parentPoolUid": "643417c023276f040b675c90"
+                "parentPoolUid": ""
               }
             }
           ]
@@ -99,11 +95,11 @@
         }
       }
     ],
-    "cloudAccountUid": "641e66cb23275e6348f84393",
+    "cloudAccountUid": "",
     "edgeHostUid": "",
     "profiles": [
       {
-        "uid": "64341d0e23276f07b8492992"
+        "uid": ""
       }
     ],
     "policies": {
